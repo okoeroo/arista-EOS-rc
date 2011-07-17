@@ -1,0 +1,3 @@
+Created by: Oscar Koeroo <okoeroo@nikhef.nl>
+
+Install an "eos.rc" file on the flash disk and ensure that an eos.rc.d/ can be created to host persistency specific scripts when a script reboots. Interesting for all third party software makers
