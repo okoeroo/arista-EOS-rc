@@ -1,3 +1,33 @@
 Created by: Oscar Koeroo <okoeroo@nikhef.nl>
 
 Install an "eos.rc" file and "eos.rc.d/" on the flash disk to aid 3rd party software developers on the EOS platform.
+
+
+I've created the following (dead simple) script to automagically construct an
+eos.rc.d/ in a non-volatile way.
+
+https://github.com/okoeroo/arista-EOS-rc
+
+It will (in sequence):
+1. Search for the /mnt/flash/eos.rc file
+1a. If not found, goto 2
+1b. If it is found, goto 3
+2. create one with a shell one-liner around the 'find' tool. Goto 4
+3. check if the '/mnt/flash/eos.rc.d' string is used somewhere. If its found,
+goto 4 otherwise goto 5
+4. leave the eos.rc alone goto 6
+5. append a piece of script to use the eos.rc.d/, but don't overwrite any of
+the previous shell script. goto 6
+6. Create the /mnt/flash/eos.rc.d/ directory if it didn't exist.
+7. Done.
+
+
+This script needs to be executed just once 'ever' on a switch. I hope this can
+be part of EOS. Perhaps not the script, but the concept of having a eos.rc and
+eos.rc.d/ always on each switch in the next EOS release.
+
+I've executed this script once on our switch and my other project
+(https://github.com/okoeroo/arp-2-bgp) can now rely on it being there for its
+post install magic script. Perhaps I should have a 'make persistent' script to
+magically to make each configuration file in an RPM EOS persist, but that's
+something for another moment in time.
