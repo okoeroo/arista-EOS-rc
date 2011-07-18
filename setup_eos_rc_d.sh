@@ -1,5 +1,10 @@
 #!/bin/sh
 
+### Website: https://github.com/okoeroo/arista-EOS-rc
+### Author:  Oscar Koeroo <okoeroo@nikhef.nl>
+
+
+
 EOS_RC="eos.rc"
 EOS_RC_PATH="${EOS_RC_PATH:=/mnt/flash}"
 EOS_RC_D="eos.rc.d"
